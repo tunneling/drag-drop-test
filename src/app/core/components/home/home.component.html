@@ -1,0 +1,30 @@
+<app-toolbar-top></app-toolbar-top>
+
+<div class="product-container">
+  <h2>Products</h2>
+  <div cdkDropList #productsList="cdkDropList" [cdkDropListData]="products" [cdkDropListConnectedTo]="[doneList]"
+    class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of products" cdkDrag>{{item.title}}</div>
+  </div>
+</div>
+
+<div class="cart-container">
+  <h2>Cart {{cart?.id}}</h2>
+
+  <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="cart.items" [cdkDropListConnectedTo]="[productsList]"
+    class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of cart.items" cdkDrag>
+      {{item.product.title}}
+      <div>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Qty." [(ngModel)]="item.qty">
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Hours" [(ngModel)]="item.hours">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
+<app-toolbar-bottom></app-toolbar-bottom>
