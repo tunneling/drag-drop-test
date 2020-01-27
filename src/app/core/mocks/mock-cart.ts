@@ -10,7 +10,7 @@ export const CART: Cart = {
             product: { id: '10', title: 'product 10', dhours: 10 }
         },
         {
-            qty: 0,
+            qty: 1,
             hours: 40,
             product: { id: '11', title: 'product 11', dhours: 10 }
         },
